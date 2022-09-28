@@ -17,9 +17,9 @@ public class item_grid extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_grid);
         Bundle arguments = getIntent().getExtras();
-        String _name = arguments.get("").toString();
-        String _phone = arguments.get("Имя").toString();
-        String _email = arguments.get("Отчество").toString();
+        String _name = arguments.get("ФИО").toString();
+        String _phone = arguments.get("Телефон").toString();
+        String _email = arguments.get("Почта").toString();
 
         name = findViewById(R.id.name);
         phone = findViewById(R.id.phone);
