@@ -31,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Intent add_new_staff;
     Intent item_gridd;
     ListView list;
-
-
+    int[] imagestaff = {R.drawable.ic_launcher_foreground};
 
 
     @Override
@@ -40,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton btn_add_staff =(ImageButton) findViewById(R.id.btn_add_staff);
-        ImageButton btn_update_list =(ImageButton) findViewById(R.id.btn_update_list);
+        //ImageButton btn_add_staff =(ImageButton) findViewById(R.id.btn_add_staff);
+        //ImageButton btn_update_list =(ImageButton) findViewById(R.id.btn_update_list);
         list = (ListView) findViewById(R.id.gridviewlist);
 
 
@@ -55,17 +54,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Staff item = (Staff) list.getItemAtPosition(i);
+
                 item_gridd.putExtra("ФИО",item.name);
                 item_gridd.putExtra("Телефон",item.phone);
                 item_gridd.putExtra("Почта",item.email);
+                item_gridd.putExtra("id", item.id);
+
                 startActivity(item_gridd);
             }
         });
 
 
+        /*
         btn_update_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 List<Map<String, String>> data = new ArrayList<Map<String, String>>();
                 Statement statement;
                 try {
@@ -79,11 +83,12 @@ public class MainActivity extends AppCompatActivity {
                             tab.put("name", resultSet.getString("name"));
                             tab.put("phone", resultSet.getString("phone"));
                             tab.put("email", resultSet.getString("email"));
+                            tab.put("id", resultSet.getString("id"));
                             data.add(tab);
 
 
                         }
-                        String[] from = {"name", "phone", "email"};
+                        String[] from = {"name", "phone", "email", "id"};
                         int[] to = {R.id.name, R.id.phone, R.id.email};
                         adapter = new SimpleAdapter(MainActivity.this, data, R.layout.gridviewlayout, from, to);
                         list.setAdapter(adapter);
@@ -94,10 +99,10 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("ERROR", exception.getMessage());
                 }
             }
-        });
+        });*/
     }
     public void onclick_view_add_staff(View view){startActivity(add_new_staff);}
- //   public UpdateList(View view){GetStaffList();}
+    public void UpdateList(View view){GetStaffList();}
 
     public void GetStaffList(){
         try{
@@ -109,10 +114,10 @@ public class MainActivity extends AppCompatActivity {
                 ResultSet resultSet = statement.executeQuery(qu);
                 while (resultSet.next()){
                     Log.d(ConnectionResult, resultSet.getString("name"));
-                    stafflist.add(new Staff(resultSet.getString("name"),resultSet.getString("phone"),resultSet.getString("email")));
+                    stafflist.add(new Staff(resultSet.getString("name"),resultSet.getString("phone"),resultSet.getString("email"),resultSet.getString("id")));
                 }
                 ConnectionResult = "Success";
-                AdaptStaff adapter = new AdaptStaff(this,stafflist);
+                AdaptStaff adapter = new AdaptStaff(this,stafflist,imagestaff);
                 list.setAdapter(adapter);
             }
             else {
