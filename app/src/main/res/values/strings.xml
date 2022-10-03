@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AppForStaff</string>
+    <string name="addnewstafftext">Добавление нового сотрудника</string>
+</resources>
