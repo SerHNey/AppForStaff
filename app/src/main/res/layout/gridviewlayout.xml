@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="@color/back_add"
     android:orientation="horizontal"
     android:padding="15dp">
 
     <ImageView
         android:id="@+id/imagestaff"
-        android:layout_width="99dp"
-        android:layout_height="102dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:padding="5dp"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -23,23 +25,21 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#7F00FF"
+            android:textColor="@color/white"
             android:textSize="20sp"></TextView>
 
         <TextView
             android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#7F00FF"
+            android:textColor="@color/white"
             android:textSize="20sp"></TextView>
 
         <TextView
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#7F00FF"
+            android:textColor="@color/white"
             android:textSize="20sp"></TextView>
     </LinearLayout>
-
-
 </LinearLayout>

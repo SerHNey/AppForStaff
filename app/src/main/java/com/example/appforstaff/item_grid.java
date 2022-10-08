@@ -38,6 +38,8 @@ public class item_grid extends AppCompatActivity {
         String _email = arguments.get("Почта").toString();
         id = Integer.valueOf(arguments.get("id").toString());
 
+
+
         name = findViewById(R.id.name);
         phone = findViewById(R.id.phone);
         email = findViewById(R.id.email);
@@ -49,6 +51,39 @@ public class item_grid extends AppCompatActivity {
 
     }
     public void btn_onclick_back_main(View view){this.finish();}
+
+    public void UpdateItemDialog(View v){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Вы точно хотите обновить данные о сотруднике?")
+                .setCancelable(false)
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        try{
+                            SQLConnectHelper cntn = new SQLConnectHelper();
+                            cnt = cntn.connect();
+                            String qu = "update Staff set name = '"
+                                    + Objects.requireNonNull(name.getEditText().getText())
+                                    + "',phone ='" + Objects.requireNonNull(phone.getEditText()).getText()
+                                    + "', email ='" + Objects.requireNonNull(email.getEditText()).getText()+
+                                    "' where id = " + id;
+                            Statement statement = cnt.createStatement();
+                            ResultSet resultSet = statement.executeQuery(qu);
+                            cnt.close();
+                            ((MainActivity)getBaseContext()).GetStaffList();
+                        }
+                        catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                            Log.d("Error - ",throwables.getMessage());
+                        }
+                    }
+                })
+                .setNegativeButton("Нет", null)
+                .create()
+                .show();
+
+    }
+
     public void UpdateItem(View view){
         try{
             SQLConnectHelper cntn = new SQLConnectHelper();
@@ -74,27 +109,27 @@ public class item_grid extends AppCompatActivity {
     public void DeleteItemDialog(View v){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setTitle("Вы точно хотите удалить данного сотрудника?")
-                .setMessage("Для подпверждения нажмите ОК")
-                .setPositiveButton("OK",DeleteItem())
-                .setNegativeButton("Отмена",null)
-                .setCancelable(true)
+                .setCancelable(false)
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        try{
+                            SQLConnectHelper connection = new SQLConnectHelper();
+                            cnt = connection.connect();
+                            String qu = "delete from Staff where id = " + id;
+                            Statement statement = cnt.createStatement();
+                            ResultSet resultSet = statement.executeQuery(qu);
+                            cnt.close();
+                        }
+                        catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                            Log.d("Error - ",throwables.getMessage());
+                        }
+                        startActivity(Mainactiv);
+                    }
+                })
+                .setNegativeButton("Нет",null)
                 .create()
                 .show();
     }
-    public DialogInterface.OnClickListener DeleteItem(){
-        try{
-            SQLConnectHelper connection = new SQLConnectHelper();
-            cnt = connection.connect();
-            String qu = "delete from Staff where id = " + id;
-            Statement statement = cnt.createStatement();
-            ResultSet resultSet = statement.executeQuery(qu);
-            cnt.close();
-        }
-        catch (SQLException throwables) {
-            throwables.printStackTrace();
-            Log.d("Error - ",throwables.getMessage());
-        }
-        return null;
-    }
-
 }

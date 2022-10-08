@@ -59,9 +59,6 @@ public class AdaptStaff extends BaseAdapter {
 
        imagess.setImageResource(images[0]);
 
-
-
-
         return view;
     }
     Staff getStaff(int pos){

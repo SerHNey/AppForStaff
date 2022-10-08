@@ -7,5 +7,17 @@
         android:icon="@android:drawable/ic_menu_search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView"></item>
+    <item
+        android:id="@+id/action_update"
+        android:title="Searth"
+        android:icon="@android:drawable/ic_menu_upload"
+        app:actionViewClass="androidx.appcompat.widget.AppCompatSpinner"
+        app:showAsAction="ifRoom|collapseActionView"></item>
+    <item
+        android:id="@+id/action_add"
+        android:title="Searth"
+        android:icon="@android:drawable/ic_menu_add"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView"></item>
 
 </menu>
