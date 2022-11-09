@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color_l"
+    tools:context=".loading_app">
+
+    <RelativeLayout
+        android:id="@+id/center"
+        android:layout_width="263dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="142dp"
+            android:layout_height="142dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/l" />
+
+        <TextView
+            android:id="@+id/textl"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@id/imageView2"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/abel"
+            android:text="Staffs app"
+            android:textAlignment="center"
+            android:textColor="@color/text_color_l"
+            android:textSize="23sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/abel"
+            android:alpha="0.5"
+            android:text="Lorem ipsum dolor sit amet, consectetur"
+            android:textAlignment="center"
+            android:textColor="@color/text_color_l"
+            android:textSize="16sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="263dp"
+        android:layout_height="170dp"
+        android:layout_marginLeft="75dp"
+        android:layout_below="@id/center">
+
+        <TextView
+            android:id="@+id/first"
+            android:layout_width="131dp"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/abel"
+            android:text="Product of "
+            android:textAlignment="textEnd"
+            android:textColor="@color/text_color_l"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="131dp"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@id/first"
+            android:fontFamily="@font/abel"
+            android:text="SerHNey"
+            android:textColor="@color/text_color_l"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
